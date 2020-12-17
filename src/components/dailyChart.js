@@ -4,7 +4,7 @@ import { Line } from 'react-chartjs-2'
 
 
 
-export class dailyChart extends Component {
+export class DailyChart extends Component {
     state = { sorted: [] }
 
     componentDidMount(){
@@ -15,7 +15,7 @@ export class dailyChart extends Component {
     render() {
         return (
             <div>
-                    hi
+                  <h1> hello world</h1>
             </div>
         )
     }
@@ -23,4 +23,4 @@ export class dailyChart extends Component {
 
 
 
-export default dailyChart
+export default DailyChart

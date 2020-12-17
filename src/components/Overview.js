@@ -8,7 +8,7 @@ import ActiveCountries from './ActiveCountries'
 import Graph from './Graph'
 import CountUp from 'react-countup'
 //import Map from './Map'
-import dailyChart from './dailyChart'
+import DailyChart from './DailyChart'
 
 export class Overview extends Component {
 
@@ -108,10 +108,10 @@ export class Overview extends Component {
 
                 <div style = {{display: 'flex', justifyContent: 'space-between'}}>
                <RecoveredCountries />
-               <dailyChart />  
+               
                <ActiveCountries /> 
                 </div>
-
+                <dailyChart />  
             </div>
         )
     }
