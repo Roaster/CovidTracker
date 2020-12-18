@@ -107,9 +107,7 @@ export class Graph extends Component {
         }
     }
 
-    
     render() {
-       
         if(this.props.myCountry !== this.state.country) {
             this.updateMe(this.props.myCountry)
         }
@@ -120,13 +118,7 @@ export class Graph extends Component {
                     <select name="countrySelect" id="countrySelect" onChange={(e) => {
                         console.log("Changing now!")
                         this.props.handleCountryChange(e.target.value)
-                        
-                        
-                        this.updateMe(e.target.value)
-                        
-                       
-
-                        
+                        this.updateMe(e.target.value)  
                     }
                                     
                     }>

@@ -1,26 +1,53 @@
-import React, { Component } from 'react'
+import React from 'react';  
 import axios from 'axios'
-import { Line } from 'react-chartjs-2'
+import {Line} from 'react-chartjs-2'
 
 
+class dailyChart extends React.Component {  
+    state = {
+        country: [],
+        keys: [1,2,3,4],
+        values: [3,4,5,]
 
-export class DailyChart extends Component {
-    state = { sorted: [] }
-
+    }
     componentDidMount(){
-        axios.get('https://disease.sh/v3/covid-19/countries?sort=deaths')
-            .then(res => this.setState({sorted: res.data }))
-    }
-
-    render() {
-        return (
-            <div>
-                  <h1> hello world</h1>
-            </div>
-        )
-    }
-}
+        axios.get('https://disease.sh/v3/covid-19/continents?sort=cases')
+        .then(res => this.setState({country: res.data}))
 
 
+       
+   }
+    render(){  
+       return(  
+        <div style ={{width: "85%"}}>
+        <Line 
+            data= {{
+            labels: this.state.country.map(({continent})=> continent),
+            datasets: [{
+                data: this.state.country.map(({cases})=>cases),
+                label: "Confirmed",
+                fill: false,
+                borderColor: "#F00",
+            },{
+           
+                data: this.state.country.map(({deaths})=>deaths),
+                    label: "Death",
+                    fill: false,
+                    borderColor: "black",
 
-export default DailyChart
+                },{
+                data: this.state.country.map(({recovered})=>recovered),
+                label: "Recover",
+                fill: false,
+                borderColor: "yellow",
+                }
+            ],
+
+        }}/> 
+
+    </div>
+    )  
+}  
+}  
+  
+export default dailyChart;
