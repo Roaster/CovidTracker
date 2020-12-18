@@ -1,6 +1,6 @@
 import React from 'react';  
 import axios from 'axios'
-import {Line} from 'react-chartjs-2'
+import {Bar, Line} from 'react-chartjs-2'
 
 
 class dailyChart extends React.Component {  
@@ -20,7 +20,8 @@ class dailyChart extends React.Component {
     render(){  
        return(  
         <div style ={{width: "85%"}}>
-        <Line 
+       <h2 style={{marginBottom:'10px', textAlign: "center"}}>Confirmed Cases, Recovered, Deaths by Region</h2>
+        <Bar
             data= {{
             labels: this.state.country.map(({continent})=> continent),
             datasets: [{
@@ -28,18 +29,21 @@ class dailyChart extends React.Component {
                 label: "Confirmed",
                 fill: false,
                 borderColor: "#F00",
+                backgroundColor: "#F00"
             },{
            
                 data: this.state.country.map(({deaths})=>deaths),
                     label: "Death",
                     fill: false,
                     borderColor: "black",
+                    backgroundColor: "black"
 
                 },{
                 data: this.state.country.map(({recovered})=>recovered),
-                label: "Recover",
+                label: "Recovered",
                 fill: false,
-                borderColor: "yellow",
+                borderColor: "green",
+                backgroundColor: "green"
                 }
             ],
 

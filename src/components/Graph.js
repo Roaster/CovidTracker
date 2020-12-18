@@ -81,14 +81,10 @@ export class Graph extends Component {
                     keys.push(key)
                     values.push(res.data.cases[key])
                 }
-
                 for(const key in res.data.recovered){
                     keysR.push(key)
                     valsR.push(res.data.recovered[key])
                 }
-
-
-                
                 this.setState({keys: keys, values: values, valsR: valsR, keysR: keysR, country: this.props.myCountry})
             }) 
 
@@ -116,11 +112,9 @@ export class Graph extends Component {
                 <div style={{display: "flex", flexDirection: "column", justifyItems: "center", alignItems: "center", width: "100%"}}>
 
                     <select name="countrySelect" id="countrySelect" onChange={(e) => {
-                        console.log("Changing now!")
                         this.props.handleCountryChange(e.target.value)
                         this.updateMe(e.target.value)  
-                    }
-                                    
+                    }          
                     }>
 
                     <option key="" value ="" >Worldwide</option>
@@ -130,6 +124,14 @@ export class Graph extends Component {
                     </select>
                     <div key="map" style ={{width: "85%"}}>
                         <Line 
+                            options={{
+                                title : {
+                                    display: true,
+                                    text: this.state.country === "" ? "Worldwide" : this.state.country,
+                                    fontSize: 20,
+                                    fontColor: "black"
+                                }
+                            }} 
                             data= {{
                             labels: this.state.keys,
                             datasets: [{
@@ -137,12 +139,14 @@ export class Graph extends Component {
                                 label: "Infected",
                                 fill: false,
                                 borderColor: "#F00",
+                                backgroundColor: "#F00"
                             }, {
                                 data: this.state.valsR,
                                 label: "Recovered", 
                                 fill: false,
                                 borderColor: "green"
-                            }] 
+                            }], 
+                            
                         }}/>
                     </div>
                 </div>
