@@ -36,7 +36,7 @@ export class Graph extends Component {
                 }
 
                 
-                this.setState({keys: keys, vals: values, country: this.props.myCountry})
+                this.setState({keys: keys, vals: values, country: this.props.myCountry, history: res.data})
                  
             }) 
         
@@ -60,10 +60,10 @@ export class Graph extends Component {
 
 
                 
-                this.setState({keys: keys, values: values, valsR: valsR, keysR: keysR})
+                this.setState({keys: keys, values: values, valsR: valsR, keysR: keysR, country: this.props.myCountry, history: res.data})
                 
                 console.log(values)
-                this.setState({keys: keys, values: values, country: this.props.myCountry})
+                //this.setState({keys: keys, values: values, })
             }) 
         }
       
@@ -76,7 +76,7 @@ export class Graph extends Component {
             axios.get("https://disease.sh/v3/covid-19/historical/all?lastdays=all")
             .then(res => { 
                 let keys = [], values = [], keysR=[], valsR=[]
-
+                
                 for(const key in res.data.cases){
                     keys.push(key)
                     values.push(res.data.cases[key])
@@ -85,7 +85,7 @@ export class Graph extends Component {
                     keysR.push(key)
                     valsR.push(res.data.recovered[key])
                 }
-                this.setState({keys: keys, values: values, valsR: valsR, keysR: keysR, country: this.props.myCountry})
+                this.setState({keys: keys, values: values, valsR: valsR, keysR: keysR, country: this.props.myCountry, history: res.data})
             }) 
 
         } else {
@@ -97,16 +97,20 @@ export class Graph extends Component {
                     keys.push(key)
                     values.push(res.data.timeline.cases[key])
                 }
-                 this.setState({keys: keys, values: values, country: this.props.myCountry})
+                 this.setState({keys: keys, values: values, country: this.props.myCountry, history: res.data})
                  
             }) 
         }
     }
-
+ 
     render() {
+       
         if(this.props.myCountry !== this.state.country) {
             this.updateMe(this.props.myCountry)
         }
+        const recovered = this.state.history.deaths
+        if(recovered) console.log(Object.values(recovered))
+
             return (
                 <div style = {{background: "#bbb", borderRadius: "2%", padding: "10px", width: "100%", margin: "0px 20px"}}>
                 <div style={{display: "flex", flexDirection: "column", justifyItems: "center", alignItems: "center", width: "100%"}}>
@@ -145,7 +149,14 @@ export class Graph extends Component {
                                 label: "Recovered", 
                                 fill: false,
                                 borderColor: "green"
-                            }], 
+                            },{
+                                data: recovered ? Object.values(recovered) : [0],
+                                label: "Deaths",
+                                fill: false, 
+                                borderColor: "black"
+
+                            }
+                            ], 
                             
                         }}/>
                     </div>

@@ -64,39 +64,45 @@ export class Overview extends Component {
         return (
             <div style={{margin: "0px 25px", marginBottom: "15px"}}>
             <h1 style={{textAlign:'center',marginTop:'20px'}}>Worldwide Statistics</h1>
-                <div style={{display: 'flex',justifyContent:'center'}}>
-                    <div style={div1}>
-                        <h2>Active Cases</h2>
-                        <h2><CountUp start={0} end={(parseInt(this.state.data.cases)) || 0} separator=","  /></h2>
-                        
-                        
+            
+            <div style ={{display:"flex", alignItems: "center"}}>
+                <DailyChart />
+                <div>
+                    <div style={{display: 'flex',justifyContent:'center'}}>
+                        <div style={div1}>
+                            <h2>Active Cases</h2>
+                            <h2><CountUp start={0} end={(parseInt(this.state.data.cases)) || 0} separator=","  /></h2>
+                        </div>
+                        <div style={div1}>
+                            <h2>Total Deaths</h2>
+                            <h2><CountUp start={0} end={parseInt(this.state.data.deaths) || 0} separator="," /></h2>
+                        </div>
+                        <div style={div1}>
+                            <h2>Total Recovered</h2>
+                            <h2><CountUp start={0} end={parseInt(this.state.data.recovered) || 0} separator="," /></h2>
+                        </div>
                     </div>
-                    <div style={div1}>
-                        <h2>Total Deaths</h2>
-                        <h2><CountUp start={0} end={parseInt(this.state.data.deaths) || 0} separator="," /></h2>
-                    </div>
-                    <div style={div1}>
-                        <h2>Total Recovered</h2>
-                        <h2><CountUp start={0} end={parseInt(this.state.data.recovered) || 0} separator="," /></h2>
-                    </div>
-                    
-                </div>
-                <h1 style={{textAlign:'center',marginTop:'20px'}}> U.S. Statistics</h1>
+                    <h1 style={{textAlign:'center',marginTop:'20px'}}> U.S. Statistics</h1>
 
-                <div style={{display: 'flex',justifyContent:'center'}}>
-                    <div style={div1}>
-                        <h2>Active Cases</h2>
-                        <h2><CountUp start={0} end={parseInt(this.state.usData.active) || 0} separator=","/></h2>
+                        <div style={{display: 'flex',justifyContent:'spaceBetween'}}>
+                        
+                            <div style={div1}>
+                                <h2>Active Cases</h2>
+                                <h2><CountUp start={0} end={parseInt(this.state.usData.active) || 0} separator=","/></h2>
+                            </div>
+                            <div style={div1}>
+                                <h2>Total Deaths</h2>
+                                <h2><CountUp start={0} end={parseInt(this.state.usData.deaths) || 0} separator="," /></h2>
+                            </div>
+
+                            <div style={div1}>
+                                <h2>Total Recovered</h2>
+                                <h2><CountUp start={0} end={parseInt(this.state.usData.recovered) || 0} separator="," /></h2>
+                            </div>
+                            
+                        </div>
                     </div>
-                    <div style={div1}>
-                        <h2>Total Deaths</h2>
-                        <h2><CountUp start={0} end={parseInt(this.state.usData.deaths) || 0} separator="," /></h2>
-                    </div>
-                    <div style={div1}>
-                        <h2>Total Recovered</h2>
-                        <h2><CountUp start={0} end={parseInt(this.state.usData.recovered) || 0} separator="," /></h2>
-                    </div>
-                    
+                    <IncreaseChart />
                 </div>
                 
                
@@ -105,24 +111,22 @@ export class Overview extends Component {
 
                 <Graph countries={this.state.countries} handleCountryChange={this.handleCountryChange} 
                 myCountry={this.state.country} 
-                getCountryData={this.getCountryHistory} />
+                getCountryData={this.getCountryHistory} history={this.state.history}/>
 
                 <CountryDeaths handleCountryChange={this.handleCountryChange} />
                 </div>
 
                 <div style = {{display: 'flex', justifyContent: 'space-between'}}>
                     <RecoveredCountries />
-                    <DailyChart />
+                    Put map here
                     <ActiveCountries /> 
                 </div>
-                <div>
-                <IncreaseChart/>
-                </div>
-            <div>
-            <div >
+               
+           
+            <div style={{width:"100%"}}>
                 <YesterdayChart />
             </div>
-            </div>
+            
             </div>
         )
     }

@@ -1,6 +1,7 @@
 import React from 'react';  
 import axios from 'axios'
 import {Bar} from 'react-chartjs-2'
+import IncreaseChart from './IncreaseChart';
 
 
 class YesterdayChart extends React.Component {  
@@ -23,9 +24,8 @@ class YesterdayChart extends React.Component {
 
         
        return(  
-        <div style= {{height:'650px', overflow:'auto',width: '370px' }}>
-            <h2 style={{marginBottom:'10px', textAlign: "center"}}>Confirmed Cases, Recovered, Deaths from Previous Day </h2>
-        <div style = {{display: 'auto', justifyContent: 'center'}}>    
+        <div style={{display: "flex"}}>
+        <div style={{width: "33%"}}>
         <Bar 
             options = {{
                 title: {
@@ -52,6 +52,8 @@ class YesterdayChart extends React.Component {
             ],
 
         }}/> 
+        </div>
+        <div style={{width: "33%"}}>
         <Bar options = {{
                 title: {
                     display: true,
@@ -77,7 +79,10 @@ class YesterdayChart extends React.Component {
             ],
 
         }}/> 
-        <Bar options = {{
+        </div>
+        <div style={{width: "33%"}}>
+        <Bar 
+        options = {{
                 title: {
                     display: true,
                     text: "Deaths Yesterday vs. Today",
@@ -102,8 +107,9 @@ class YesterdayChart extends React.Component {
             ],
 
         }}/> 
-        
         </div>
+        
+        
     </div>
     )  
 }  

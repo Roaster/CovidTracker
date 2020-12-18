@@ -19,9 +19,17 @@ class dailyChart extends React.Component {
    }
     render(){  
        return(  
-        <div style ={{width: "85%"}}>
-       <h2 style={{marginBottom:'10px', textAlign: "center"}}>Confirmed Cases, Recovered, Deaths by Region</h2>
+        <div style={{width: "33%"}}>
+       <h2 style={{marginBottom:'10px', textAlign: "center"}}></h2>
         <Bar
+            options={{
+                title : {
+                    display: true,
+                    text: "Total Confirmed Cases, Recovered and Deaths by Region" ,
+                    fontSize: 20,
+                    fontColor: "black"
+                    }
+            }} 
             data= {{
             labels: this.state.country.map(({continent})=> continent),
             datasets: [{
