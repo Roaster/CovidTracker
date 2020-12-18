@@ -15,10 +15,6 @@ class YesterdayChart extends React.Component {
         .then(res => this.setState({country: res.data}))
         axios.get('https://disease.sh/v3/covid-19/continents?yesterday=true&sort=cases')
         .then(res => this.setState({yesterday: res.data}))
-
-
-
-       
    }
     render(){  
 

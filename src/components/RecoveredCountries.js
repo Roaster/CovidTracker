@@ -16,8 +16,8 @@ export class RecoveredCountries extends Component {
             <div style = {{background: "#bbb", borderRadius: "2%", padding: "10px"}}>
                 <h2 style={{marginBottom:'10px', textAlign: "center", wordWrap: "normal", width:"260px"}}>Recovered Cases by Countries</h2>
                         <div style= {{height:'250px', overflow:'auto',width: '260px'}}>
-                            {this.state.sorted.map((data) => (
-                                <div style={country }>
+                            {this.state.sorted.map((data, i) => (
+                                <div key={i} style={country }>
                                 <h4 >{data.country}</h4>
                                 <h4 style={{marginLeft:'15px'}}>{parseInt(data.recovered).toLocaleString()}</h4>
                                 </div>

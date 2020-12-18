@@ -7,7 +7,7 @@ import RecoveredCountries from './RecoveredCountries'
 import ActiveCountries from './ActiveCountries'
 import Graph from './Graph'
 import CountUp from 'react-countup'
-import DailyChart from './dailyChart'
+import DailyChart from './DailyChart'
 import YesterdayChart from './YesterdayChart';
 import IncreaseChart from './IncreaseChart'
 
@@ -43,21 +43,20 @@ export class Overview extends Component {
 
     
       getCountryHistory = (country) => {
+          if(country !== ""){
             axios.get(`https://disease.sh/v3/covid-19/historical/${country}?lastdays=all`)
             .then(res => this.setState({history: res.data.timeline }))  
-
+          } else {
+            axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
+            .then(res => this.setState({history: res.data }))
+          }
         }
     
     
       handleCountryChange = (country) =>{
         console.log(country)
-        //this.getCountryHistory(country)
-        
+        this.getCountryHistory(country)
         this.setState({country: country})
-        
-       
-        
-        
       }
 
     render() {
