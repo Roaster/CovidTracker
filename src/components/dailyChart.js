@@ -22,6 +22,7 @@ class DailyChart extends React.Component {
         
        return(  
         <div style ={{width: "85%"}}>
+       <h2 style={{marginBottom:'10px', textAlign: "center"}}>Confirmed Cases, Recovered, Deaths by Region</h2>
         <Line 
             data= {{
             labels: this.state.country.map(({continent})=> continent),

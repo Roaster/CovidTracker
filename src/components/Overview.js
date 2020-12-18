@@ -8,7 +8,9 @@ import ActiveCountries from './ActiveCountries'
 import Graph from './Graph'
 import CountUp from 'react-countup'
 import DailyChart from './DailyChart'
+import YesterdayChart from './YesterdayChart';
 import IncreaseChart from './IncreaseChart'
+
 
 
 
@@ -117,7 +119,9 @@ export class Overview extends Component {
                 <IncreaseChart/>
                 </div>
             <div>
-            <test/>
+            <div >
+                <YesterdayChart />
+            </div>
             </div>
             </div>
         )
