@@ -10,6 +10,7 @@ import CountUp from 'react-countup'
 import DailyChart from './DailyChart'
 import YesterdayChart from './YesterdayChart';
 import IncreaseChart from './IncreaseChart'
+import Map from './Map'
 
 
 
@@ -22,7 +23,8 @@ export class Overview extends Component {
         sorted: [],
         countries: [],
         history: [],
-        country: ''
+        country: '',
+        countryInfo: []
     }
 
     componentDidMount(){
@@ -37,11 +39,16 @@ export class Overview extends Component {
         axios.get('https://disease.sh/v3/covid-19/historical/all?lastdays=all')
             .then(res => this.setState({history: res.data }))
             
-                
-     
+        
       }
 
-    
+      getCountryInfo = () => {
+          
+        const countryInfo = this.state.countries.map(({countryInfo}) => countryInfo)
+        this.setState({countryInfo: countryInfo})
+        //console.log(this.state.countryInfo)
+      }
+
       getCountryHistory = (country) => {
           if(country !== ""){
             axios.get(`https://disease.sh/v3/covid-19/historical/${country}?lastdays=all`)
@@ -60,6 +67,7 @@ export class Overview extends Component {
       }
 
     render() {
+        //console.log(this.state.countries)
         return (
             <div style={{margin: "0px 25px", marginBottom: "15px"}}>
             <h1 style={{textAlign:'center',marginTop:'20px'}}>Worldwide Statistics</h1>
@@ -117,7 +125,8 @@ export class Overview extends Component {
 
                 <div style = {{display: 'flex', justifyContent: 'space-between'}}>
                     <RecoveredCountries />
-                    Put map here
+                    {console.log(this.state.countryInfo)}
+                    <Map  countries={this.state.countries} getCountryInfo={this.getCountryInfo} countryInfo={this.state.countryInfo}/>
                     <ActiveCountries /> 
                 </div>
                
