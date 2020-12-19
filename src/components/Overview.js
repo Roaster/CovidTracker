@@ -5,9 +5,16 @@ import Countries from './Countries'
 import CountryDeaths from './CountryDeaths'
 import RecoveredCountries from './RecoveredCountries'
 import ActiveCountries from './ActiveCountries'
+import RecoveredStates from './RecoveredStates'
+import ActiveStates from './ActiveStates'
+import PredictedActiveCountries from './PredictedActiveCountries'
+import PredictedActiveStates from './PredictedActiveStates'
+import PredictedDeathsCountries from './PredictedDeathsCountries'
+import PredictedDeathsStates from './PredictedDeathsStates'
+import DataSources from './DataSources'
 import Graph from './Graph'
 import CountUp from 'react-countup'
-import DailyChart from './DailyChart'
+import DailyChart from './dailyChart'
 import YesterdayChart from './YesterdayChart';
 import IncreaseChart from './IncreaseChart'
 import Map from './Map'
@@ -129,10 +136,27 @@ export class Overview extends Component {
                     <Map  countries={this.state.countries} getCountryInfo={this.getCountryInfo} countryInfo={this.state.countryInfo}/>
                     <ActiveCountries /> 
                 </div>
+
+                <div style = {{display: 'flex', justifyContent: 'space-between'}}>
+                    <RecoveredStates />
+                    
+                    <ActiveStates />
+                </div>
+
+                <div style = {{display: 'flex', justifyContent: 'space-between'}}>
+                    <PredictedActiveCountries />
+                    <PredictedDeathsCountries />
+                    <PredictedActiveStates />
+                    <PredictedDeathsStates />
+                </div>
                
            
             <div style={{width:"100%"}}>
                 <YesterdayChart />
+            </div>
+
+            <div style = {{display: 'flex', justifyContent: 'center'}}>
+                <DataSources />
             </div>
             
             </div>
