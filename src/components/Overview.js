@@ -14,7 +14,7 @@ import PredictedDeathsStates from './PredictedDeathsStates'
 import DataSources from './DataSources'
 import Graph from './Graph'
 import CountUp from 'react-countup'
-import DailyChart from './dailyChart'
+import DailyChart from './DailyChart'
 import YesterdayChart from './YesterdayChart';
 import IncreaseChart from './IncreaseChart'
 import Map from './Map'

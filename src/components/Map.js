@@ -39,7 +39,7 @@ export class Map extends Component {
         {this.state.countryInfo.map((data, i) => (
           <Circle key={i} center={[data.countryInfo.lat, data.countryInfo.long]} radius={data.cases/10} >
           <Popup>
-             <img src = {data.countryInfo.flag} style={{height: "100%", width: "100%"}} ></img>
+             <img src = {data.countryInfo.flag} style={{height: "120%", width: "100%"}} ></img>
              <h1>Country: {data.country} </h1>
              <h1>Cases: {data.active}</h1>
              <h1>Deaths: {data.deaths}</h1>
