@@ -1,4 +1,4 @@
-#Covid19 React Tracking Tool
+# Covid19 React Tracking Tool
 
 Covid19 React Tracker is an app created to stay up to date with all the Covid19 statitics around the world. This app was created for CPSC-349 at CSUF.
 Members: Brandon Chenze, David Huang, Loc Nguyen, Stephanie Nguyen
