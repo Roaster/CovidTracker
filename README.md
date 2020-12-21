@@ -5,7 +5,8 @@ Covid19 React Tracker is an app created to stay up to date with all the Covid19 
 Members: Brandon Chenze, David Huang, Loc Nguyen, Stephanie Nguyen
 
 To run simply open the folder in VSCode and run the command npm start. A webrowser will then open displaying the Covid19 Tracker.
-Requirements to run
+
+<h2>Requirements to run</h2>
 
 Axios
 npm install --save  axios
